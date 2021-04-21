@@ -9,3 +9,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
     return isResponseAsync;
 });
+
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    if (changeInfo.url) {
+        console.log('abc')
+        console.log(changeInfo.url)
+        chrome.extension.getBackgroundPage().console.log('def')
+    }
+})
